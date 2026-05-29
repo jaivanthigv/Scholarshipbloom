@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 import pickle
 import random
@@ -271,7 +270,6 @@ def recommend(profile, documents):
             })
     recommendations.sort(key=lambda item: item['eligibility'], reverse=True)
     return recommendations
-=======
 import os
 import pickle
 import random
@@ -544,4 +542,3 @@ def recommend(profile, documents):
             })
     recommendations.sort(key=lambda item: item['eligibility'], reverse=True)
     return recommendations
->>>>>>> 51e11720cff3768d449587e0d97fd34cdc7967b7
