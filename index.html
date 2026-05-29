@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholarship Management Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <span class="brand-pill">Scholarship Bloom</span>
+        <h1>AI Scholarship Recommendation Portal</h1>
+        <p>Smart guidance for your academic journey with soft-color student-friendly experience.</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-secondary" id="notifyToggle">Show Notifications</button>
+      </div>
+    </header>
+
+    <section class="quick-stats">
+      <article class="stat-card">
+        <span>Profile Progress</span>
+        <strong id="profileProgressLabel">0%</strong>
+      </article>
+      <article class="stat-card">
+        <span>Scholarships Recommended</span>
+        <strong id="recommendationCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Verification Status</span>
+        <strong id="verificationStatus">Pending</strong>
+      </article>
+    </section>
+
+    <div class="layout-grid">
+      <main>
+        <section class="card-section">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Registration</p>
+              <h2>Create your student account</h2>
+            </div>
+            <span class="tag">Mandatory uploads: Aadhaar & Photo</span>
+          </div>
+
+          <form id="registrationForm" class="form-card">
+            <div class="form-grid">
+              <label>
+                Student Name
+                <input type="text" id="studentName" placeholder="Aarav Sharma" required />
+              </label>
+              <label>
+                Email Address
+                <input type="email" id="studentEmail" placeholder="aarav@example.com" required />
+              </label>
+              <label>
+                Phone Number
+                <input type="tel" id="studentPhone" placeholder="+91 99999 12345" required />
+              </label>
+              <label>
+                Community Category
+                <select id="studentCommunity" required>
+                  <option value="General">General</option>
+                  <option value="SC">SC</option>
+                  <option value="ST">ST</option>
+                  <option value="OBC">OBC</option>
+                  <option value="EWS">EWS</option>
+                </select>
+              </label>
+              <label>
+                Family Income (Annual)
+                <input type="number" id="familyIncome" placeholder="₹250000" required />
+              </label>
+              <label>
+                Current CGPA / Percentage
+                <input type="text" id="studentMarks" placeholder="8.4 / 84%" required />
+              </label>
+              <label>
+                Course
+                <input type="text" id="studentCourse" placeholder="B.Tech Computer Science" required />
+              </label>
+              <label>
+                Department
+                <input type="text" id="studentDepartment" placeholder="Computer Science" required />
+              </label>
+              <label>
+                Location
+                <input type="text" id="studentLocation" placeholder="Chennai, Tamil Nadu" required />
+              </label>
+            </div>
+
+            <div class="upload-grid">
+              <label class="upload-card">
+                Aadhaar Card Upload
+                <input type="file" id="aadhaarUpload" accept="image/*,.pdf" required />
+              </label>
+              <label class="upload-card">
+                Student Photo Upload
+                <input type="file" id="photoUpload" accept="image/*" required />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Register and Analyze Eligibility</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card-section hidden" id="completeProfileSection">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Complete Profile</p>
+              <h2>Upload remaining documents</h2>
+            </div>
+            <span class="tag tag-soft">Documents help verify eligibility faster</span>
+          </div>
+
+          <div class="progress-block">
+            <div class="progress-labels">
+              <span>Profile completion</span>
+              <strong id="progressPercentage">0%</strong>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <div class="doc-grid" id="documentUploadGrid">
+            <label class="upload-card">
+              Community / Caste Certificate
+              <input type="file" data-doc="Community Certificate" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Income Certificate
+              <input type="file" data-doc="Income Certificate" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Transfer Certificate
+              <input type="file" data-doc="Transfer Certificate" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Previous Year Marksheet
+              <input type="file" data-doc="Marksheet" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Bonafide Certificate
+              <input type="file" data-doc="Bonafide Certificate" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Bank Passbook Copy
+              <input type="file" data-doc="Bank Passbook" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Student ID Card
+              <input type="file" data-doc="Student ID Card" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Address Proof
+              <input type="file" data-doc="Address Proof" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Fee Receipt / Fee Structure
+              <input type="file" data-doc="Fee Receipt" accept="image/*,.pdf" />
+            </label>
+            <label class="upload-card">
+              Signature Scan
+              <input type="file" data-doc="Signature Scan" accept="image/*,.pdf" />
+            </label>
+          </div>
+        </section>
+
+        <section class="card-section hidden" id="recommendationSection">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Scholarship Recommendations</p>
+              <h2>Your best-fit scholarships</h2>
+            </div>
+            <span class="tag">AI-assisted eligibility insights</span>
+          </div>
+
+          <div id="recommendationResults" class="recommendation-grid"></div>
+        </section>
+      </main>
+
+      <aside>
+        <section class="card-section ai-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">AI Suggestions</p>
+              <h2>Actionable guidance</h2>
+            </div>
+          </div>
+          <div class="ai-message" id="aiSuggestion">
+            Complete your profile and upload documents to unlock tailored scholarship matches. The system will also suggest the strongest scholarships based on your academic merit and income level.
+          </div>
+        </section>
+
+        <section class="card-section dashboard-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Tracking Dashboard</p>
+              <h2>Application status overview</h2>
+            </div>
+          </div>
+          <div class="dashboard-list">
+            <div class="dashboard-item">
+              <span>Recommended</span>
+              <strong id="dashboardRecommended">0</strong>
+            </div>
+            <div class="dashboard-item">
+              <span>Missing Docs</span>
+              <strong id="dashboardMissingDocs">10</strong>
+            </div>
+            <div class="dashboard-item">
+              <span>Verified</span>
+              <strong id="dashboardVerified">0</strong>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <div class="notification-panel hidden" id="notificationPanel">
+      <h3>Notifications</h3>
+      <ul id="notificationList">
+        <li>Welcome to Scholarship Bloom! Complete registration to receive smart matches.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
