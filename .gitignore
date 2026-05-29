@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules/
 build/
 .env
@@ -6,3 +7,13 @@ __pycache__/
 *.pyc
 .DS_Store
 backend/model.pkl
+=======
+node_modules/
+build/
+.env
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+backend/model.pkl
+>>>>>>> 51e11720cff3768d449587e0d97fd34cdc7967b7
